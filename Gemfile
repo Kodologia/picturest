@@ -13,8 +13,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 
 group :development, :test do
-	gem 'sqlite3'
+  gem 'factory_girl_rails'
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -23,6 +26,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :test do
+  gem 'faker'
+end
+
 
 group :production do
   gem 'pg'
