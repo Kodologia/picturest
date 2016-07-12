@@ -29,14 +29,17 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
+      flash[:success] = 'Zaktualizowano zdjęcie.'
       redirect_to @photo
     else
+      flash.now[:danger] = 'Nie można zaktualizować zdjęcia.'
       render :edit
     end
   end
 
   def destroy
     @photo.destroy
+    flash[:success] = 'Zdjęcie zostało usunięte.'
     redirect_to photos_url
   end
 
