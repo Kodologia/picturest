@@ -79,7 +79,7 @@ describe PhotosController do
         expect(response).to redirect_to photo_path(1)
       end
     end
-    context "with valid attributes" do
+    context "with invalid attributes" do
       it "does not save new photo" do
         expect {
           post :create, params: { photo: { title: 'Tytuł zdjęcia' }}

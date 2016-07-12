@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 
 group :development, :test do
+  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'byebug', platform: :mri
