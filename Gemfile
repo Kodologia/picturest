@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bcrypt', '~> 3.1.7'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -14,7 +15,7 @@ gem 'carrierwave'
 
 group :development, :test do
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.0'
