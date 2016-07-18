@@ -17,3 +17,12 @@ body {
 a {
   color: #222;
 }
+
+.field_with_errors {
+  @extend .has-error;
+}
+
+.form-error-message {
+  color: red;
+  margin: 5px;
+}

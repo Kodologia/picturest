@@ -1,17 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bcrypt', '~> 3.1.7'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5.x'
-gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'config'
+gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails'
+gem 'puma', '~> 3.0'
+gem 'recaptcha', require: 'recaptcha/rails'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5.x'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'capybara'
@@ -32,7 +34,6 @@ end
 group :test do
   gem 'faker'
 end
-
 
 group :production do
   gem 'pg'

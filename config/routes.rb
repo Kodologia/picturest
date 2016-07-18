@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'about', to: 'home#about'
   get 'terms', to: 'home#terms'
   resources :photos
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
 end

@@ -69,7 +69,11 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    config (1.2.1)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0, >= 1.0.1)
     debug_inspector (0.0.2)
+    deep_merge (1.0.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -153,6 +157,8 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    recaptcha (3.3.0)
+      json
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -220,6 +226,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.1.0)
+  config
   factory_girl_rails
   faker
   jbuilder (~> 2.0)
@@ -230,6 +237,7 @@ DEPENDENCIES
   rails (>= 5.0.0.rc1, < 5.1)
   rails-controller-testing
   rails_12factor
+  recaptcha
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   spring
