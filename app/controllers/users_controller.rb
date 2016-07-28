@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :login_required, only: :account
+
   def new
     @user = User.new
   end
@@ -10,12 +12,16 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'Uzupełnij kod reCAPTCHA.'
       render :new
     elsif @user.save
+      login_user(@user)
       flash[:success] = 'Zostałeś zarejestrowany.'
-      redirect_to root_path
+      redirect_to_target_or_root
     else
       flash.now[:danger] = 'Nie można utworzyć konta użytkownika.'
       render :new
     end
+  end
+
+  def account
   end
 
 private
