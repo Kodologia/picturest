@@ -1,11 +1,13 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :login_required, except: [:index, :show]
+  before_action :set_photo, only: [:edit, :update, :destroy]
 
   def index
     @photos = Photo.all
   end
 
   def show
+    Photo.find(params[:id])
   end
 
   def new
@@ -14,6 +16,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.user = current_user
 
     if @photo.save
       flash[:success] = 'Utworzono nowe zdjęcie.'
@@ -45,7 +48,7 @@ class PhotosController < ApplicationController
 
 private
   def set_photo
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
   end
 
   def photo_params
