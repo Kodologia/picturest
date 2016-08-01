@@ -4,16 +4,18 @@ require 'capybara/rspec'
 Capybara.default_max_wait_time = 4
 Capybara.default_host = "http://127.0.0.1"
 
-RSpec.configure do |c|
-  c.before do
+RSpec.configure do |config|
+  config.before do
     Capybara.reset_sessions!
   end
 
-  c.after(:all) do
+  config.after(:all) do
     if Rails.env.test?
       FileUtils.rm_rf(Rails.root + "public/test_uploads")
     end
   end
+
+  config.include FeatureHelper, type: :feature
 end
 
 Dir["#{Rails.root}/app/uploaders/*.rb"].each { |file| require file }

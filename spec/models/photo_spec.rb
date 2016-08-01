@@ -15,4 +15,9 @@ describe Photo do
     photo = build(:photo, description: '')
     expect(photo).to_not be_valid
   end
+
+  it 'is invalid without user' do
+    photo = build(:photo, user: nil)
+    expect(photo).to_not be_valid
+  end
 end
