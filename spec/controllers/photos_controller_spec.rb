@@ -103,19 +103,19 @@ describe PhotosController do
       context 'with valid attributes' do
         it 'save new photo' do
           expect {
-            post :create, params: { photo: { title: 'Tytuł zdjęcia', description: 'Opis' }}
+            post :create, params: { photo: { title: 'T', description: 'Opis' }}
           }.to change(Photo, :count).by(1)
         end
 
         it 'save new photo with expected attributes' do
-          post :create, params: { photo: { title: 'Tytuł zdjęcia', description: 'Opis' }}
+          post :create, params: { photo: { title: 'T', description: 'Opis' }}
           expect(Photo.count).to be > 0
-          expect(Photo.last.title).to eq 'Tytuł zdjęcia'
+          expect(Photo.last.title).to eq 'T'
           expect(Photo.last.description).to eq 'Opis'
         end
 
         it 'redirects to show page' do
-          post :create, params: { photo: { title: 'Tytuł zdjęcia', description: 'Opis' }}
+          post :create, params: { photo: { title: 'T', description: 'Opis' }}
           expect(response).to redirect_to photo_path(1)
         end
       end
@@ -154,7 +154,7 @@ describe PhotosController do
       end
 
       context 'valid attributes' do
-        it 'changes photo's attributes' do
+        it "changes photo's attributes" do
           put :update, params: { id: photo, photo: { title: 'Nowy Tytuł' }}
           photo.reload
           expect(photo.title).to eq 'Nowy Tytuł'
@@ -167,7 +167,7 @@ describe PhotosController do
       end
 
       context 'invalid attributes' do
-        it 'changes photo's attributes' do
+        it "changes photo's attributes" do
           put :update, params: { id: photo, photo: { title: '' }}
           photo.reload
           expect(photo.title).to eq 'Tytuł'

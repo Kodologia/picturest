@@ -14,6 +14,8 @@
   <%= @photo.description %>
 </p>
 
+<%= render 'rating_form', photo: @photo, rating: @rating %>
+
 <p>
   <%= image_tag @photo.image_url, height: 400 %>
 </p>

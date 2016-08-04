@@ -18,6 +18,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to "Moje konto", account_path %></li>
+          <li><%= link_to "Zapisane zdjęcia", photos_collection_path %></li>
           <li><%= link_to "Wyloguj się", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Logowanie", login_path %></li>

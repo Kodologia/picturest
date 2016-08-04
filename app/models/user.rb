@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :photos
+  has_many :ratings
+  has_and_belongs_to_many :saved_photos, class_name: 'Photo'
 
   def downcase_email
     email.downcase!

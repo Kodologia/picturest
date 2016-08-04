@@ -8,6 +8,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @rating = @photo.ratings.find_by(user: current_user)
   end
 
   def new
@@ -44,6 +45,22 @@ class PhotosController < ApplicationController
     @photo.destroy
     flash[:success] = 'Zdjęcie zostało usunięte.'
     redirect_to photos_url
+  end
+
+  def rate
+    photo = Photo.find(params[:id])
+    rating = photo.ratings.find_or_initialize_by(user: current_user)
+    rating.value = params[:value]
+    rating.save!
+    flash[:success] = 'Ocena została zapisana.'
+    redirect_to(:back)
+  end
+
+  def save_to_user_collection
+    photo = Photo.find(params[:id])
+    current_user.saved_photos << photo
+    flash[:success] = 'Obrazek został dodany zapisany do Twojej kolekcji.'
+    redirect_to(:back)
   end
 
 private

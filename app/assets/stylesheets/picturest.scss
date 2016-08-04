@@ -3,6 +3,7 @@
 
 body {
   padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 .footer {
@@ -25,4 +26,14 @@ a {
 .form-error-message {
   color: red;
   margin: 5px;
+}
+
+.rating-buttons {
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  .button_to {
+    display: inline;
+    margin: 5px;
+  }
 }

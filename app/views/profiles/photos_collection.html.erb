@@ -1,0 +1,25 @@
+<% content_for :title, "Zapisane zdjęcia" %>
+
+<h1>
+  Zapisane zdjęcia
+</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tytuł</th>
+      <th>Opis</th>
+      <th>Plik</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= link_to photo.title, photo_path(photo) %></td>
+        <td><%= photo.description %></td>
+        <td><%= image_tag photo.image_url, height: 60 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

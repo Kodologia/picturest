@@ -10,15 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728074423) do
+ActiveRecord::Schema.define(version: 20160803100046) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.integer  "ratings_count", default: 0, null: false
+    t.integer  "ratings_sum",   default: 0, null: false
+  end
+
+  create_table "photos_users", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.index ["photo_id", "user_id"], name: "index_photos_users_on_photo_id_and_user_id", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "photo_id"], name: "index_ratings_on_user_id_and_photo_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

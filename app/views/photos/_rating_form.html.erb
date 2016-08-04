@@ -1,0 +1,24 @@
+<div class="rating-buttons">
+  <%= button_to rate_photo_path(photo), params: { value: 1 },
+      class: "btn btn-default #{rating.try(:value) == 1 ? 'disabled' : ''}" do%>
+    <%= fa_icon 'thumbs-o-up' %>
+  <% end %>
+
+  <%= button_to rate_photo_path(photo), params: { value: -1 },
+      class: "btn btn-default #{rating.try(:value) == -1 ? 'disabled' : ''}" do%>
+    <%= fa_icon 'thumbs-o-down' %>
+  <% end %>
+
+  <%= button_to save_to_user_collection_photo_path(photo),
+      class: "btn btn-primary
+      #{current_user.saved_photos.include?(photo) ? 'disabled' : ''}" do %>
+    <%= fa_icon 'thumb-tack' %>
+    Zapisz
+  <% end %>
+</div>
+
+<p>
+  Aktualna ocena:
+  <strong><%= sprintf("%+d", photo.ratings_sum) %></strong>
+  (<%= photo.ratings_count %>)
+</p>
