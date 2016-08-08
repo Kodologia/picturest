@@ -1,0 +1,26 @@
+<div class="photos-list">
+  <% photos.in_groups_of(3, false).each do |group| %>
+    <div class="row">
+      <% group.each do |photo| %>
+        <div class="col-md-4 photo">
+          <div class="title"><%= link_to photo.title, photo_path(photo) %></div>
+          <div class="image"><%= image_tag photo.image_url %></div>
+          <%= render 'rating_form', photo: photo,
+              rating: photo.ratings.find_by(user: current_user) %>
+          <div><%= photo.description %></div>
+          <% if photo.user == current_user %>
+            <div class="actions">
+              <%= link_to 'Edytuj', edit_photo_path(photo),
+                  class: 'btn btn-primary' %>
+              <%=
+                link_to 'Usuń', photo_path(photo), method: :delete,
+                  data: { confirm: 'Na pewno chcesz usunąć zdjęcie?' },
+                  class: 'btn btn-danger'
+              %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

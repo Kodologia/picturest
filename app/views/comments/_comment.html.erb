@@ -1,0 +1,11 @@
+<div class="comment panel panel-default">
+  <div class="panel-heading">
+    <strong>
+      <%= comment.user.full_name %>
+    </strong>
+    Posted <%= time_ago_in_words(comment.created_at) %> ago
+  </div>
+  <div class="panel-body">
+    <%= comment.body %>
+  </div>
+</div>

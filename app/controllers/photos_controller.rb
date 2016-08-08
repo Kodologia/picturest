@@ -3,12 +3,13 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:edit, :update, :destroy]
 
   def index
-    @photos = Photo.all
+    @photos = Photo.page(params[:page])
   end
 
   def show
     @photo = Photo.find(params[:id])
     @rating = @photo.ratings.find_by(user: current_user)
+    @comment = Comment.new
   end
 
   def new

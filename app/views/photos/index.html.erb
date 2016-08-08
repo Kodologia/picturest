@@ -5,35 +5,6 @@
   <%= link_to "Dodaj zdjęcie", new_photo_path, class: 'btn btn-primary pull-right' %>
 </h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Tytuł</th>
-      <th>Opis</th>
-      <th>Plik</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%= render 'photos_list', photos: @photos %>
 
-  <tbody>
-    <% @photos.each do |photo| %>
-      <tr>
-        <td><%= link_to photo.title, photo_path(photo) %></td>
-        <td><%= photo.description %></td>
-        <td><%= image_tag photo.image_url, height: 60 %></td>
-        <% if photo.user == current_user %>
-          <td><%= link_to 'Edytuj', edit_photo_path(photo) %></td>
-          <td>
-            <%=
-              link_to 'Usuń', photo_path(photo), method: :delete,
-                data: { confirm: 'Na pewno chcesz usunąć zdjęcie?' }
-            %>
-          </td>
-        <% else %>
-          <td></td>
-          <td></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= will_paginate @photos, renderer: BootstrapPagination::Rails %>

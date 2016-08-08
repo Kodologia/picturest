@@ -37,3 +37,25 @@ a {
     margin: 5px;
   }
 }
+
+.photos-list .photo {
+  padding: 20px 15px;
+
+  .title {
+    font-size: 1.6em;
+  }
+
+  .image img {
+    margin: 15px 0;
+    max-height: 200px;
+    max-width: 100%;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .actions .btn {
+    margin: 10px 10px 0 10px;
+  }
+}

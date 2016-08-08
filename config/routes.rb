@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get 'home/index'
+  root 'photos#index'
   get 'about', to: 'home#about'
   get 'terms', to: 'home#terms'
 
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   get 'photos_collection', to: 'profiles#photos_collection'
 
   resources :photos do
+    resources :comments, only: :create
     member do
       post 'rate'
       post 'save_to_user_collection'

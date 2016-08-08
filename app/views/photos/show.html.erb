@@ -19,3 +19,25 @@
 <p>
   <%= image_tag @photo.image_url, height: 400 %>
 </p>
+
+<%= content_tag(:h3, 'Komentarze:') if @photo.comments.present? %>
+<%= render @photo.comments %>
+
+<% if logged_in? %>
+  <h3>Dodaj komentarz</h3>
+
+  <%= form_for [@photo, @comment] do |f| %>
+    <div class="form-group">
+      <%= f.label :body, 'Nowy komentarz' %>
+      <%= f.text_area :body, class: 'form-control',
+          placeholder: 'Wpisz komentarz' %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit 'Dodaj komentarz', class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+<% else %>
+  <h3>Zaloguj sie aby dodać komentarz</h3>
+<% end %>
+
