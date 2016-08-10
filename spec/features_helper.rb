@@ -30,6 +30,8 @@ if defined?(CarrierWave)
       def cache_dir
         "test_uploads/tmp"
       end
+
+      storage :file
     end
   end
 end
