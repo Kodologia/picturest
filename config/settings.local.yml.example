@@ -1,3 +1,8 @@
 recaptcha:
   site_key:
   secret_key:
+aws:
+  key_id:
+  secret_key:
+  bucket_name:
+  region:
